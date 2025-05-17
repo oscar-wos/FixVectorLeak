@@ -2,12 +2,11 @@ using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
+using FixVectorLeak.Structs;
 
-using FixVectorLeak.src.Structs;
+namespace FixVectorLeak.Extensions;
 
-namespace FixVectorLeak.src;
-
-unsafe static class Extensions
+public unsafe static class Extensions
 {
     public static void Teleport(this CBaseEntity entity, Vector_t? position = null, QAngle_t? angles = null, Vector_t? velocity = null)
     {

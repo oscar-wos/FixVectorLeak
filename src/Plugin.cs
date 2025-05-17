@@ -1,14 +1,13 @@
 ﻿using CounterStrikeSharp.API.Core;
-using FixVectorLeak.src.Structs;
+using FixVectorLeak.Extensions;
+using FixVectorLeak.Structs;
 
-namespace FixVectorLeak.src;
+namespace FixVectorLeak;
 
 public class Plugin : BasePlugin
 {
     public override string ModuleName => "FixVectorLeak";
     public override string ModuleVersion => "1.0.0";
-
-    private readonly QAngle_t _zeroAng = new();
 
     public unsafe override void Load(bool hotReload)
     {
@@ -21,7 +20,7 @@ public class Plugin : BasePlugin
                 Z = 350
             };
 
-            p.PlayerPawn.Value.Teleport(velocity:vel);
+            p.PlayerPawn.Value.Teleport(velocity: vel);
         });
 
         AddCommand("css_movefwd", string.Empty, (p, i) =>
@@ -61,7 +60,7 @@ public class Plugin : BasePlugin
         {
             if (p?.PlayerPawn.Value is null) return;
 
-            p.PlayerPawn.Value.Teleport(angles: _zeroAng);
+            p.PlayerPawn.Value.Teleport(angles: new QAngle_t());
         });
 
         RegisterEventHandler<EventWeaponFire>(OnWeaponFire);
@@ -77,12 +76,12 @@ public class Plugin : BasePlugin
 
         fwd.Scale(-200);
 
-        var velocity = player.PlayerPawn.Value.AbsVelocity.ToVector_t() with
+        var vel = player.PlayerPawn.Value.AbsVelocity.ToVector_t() with
         {
             Z = 250
         } + fwd;
 
-        player.PlayerPawn.Value.Teleport(velocity:velocity);
+        player.PlayerPawn.Value.Teleport(velocity: vel);
 
         return HookResult.Continue;
     }
