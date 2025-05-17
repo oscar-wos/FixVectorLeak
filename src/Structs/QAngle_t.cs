@@ -3,9 +3,9 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace FixVectorLeak.src.Structs;
+namespace FixVectorLeak.Structs;
 
-struct QAngle_t : IAdditionOperators<QAngle_t, QAngle_t, QAngle_t>,
+public struct QAngle_t : IAdditionOperators<QAngle_t, QAngle_t, QAngle_t>,
         ISubtractionOperators<QAngle_t, QAngle_t, QAngle_t>,
         IMultiplyOperators<QAngle_t, float, QAngle_t>,
         IDivisionOperators<QAngle_t, float, QAngle_t>

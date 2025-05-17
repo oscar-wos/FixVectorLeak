@@ -2,9 +2,9 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace FixVectorLeak.src.Structs;
+namespace FixVectorLeak.Structs;
 
-struct Vector_t : IAdditionOperators<Vector_t, Vector_t, Vector_t>,
+public struct Vector_t : IAdditionOperators<Vector_t, Vector_t, Vector_t>,
         ISubtractionOperators<Vector_t, Vector_t, Vector_t>,
         IMultiplyOperators<Vector_t, float, Vector_t>,
         IDivisionOperators<Vector_t, float, Vector_t>
